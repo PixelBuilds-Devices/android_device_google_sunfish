@@ -431,6 +431,10 @@ PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey \
     android.hardware.drm-service.widevine
 
+# EUICC
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.telephony.euicc.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.hardware.telephony.euicc.xml
+
 # NFC and Secure Element packages
 PRODUCT_PACKAGES += \
     NfcNci \
