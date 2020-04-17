@@ -40,6 +40,13 @@ BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
 TARGET_BOARD_COMMON_PATH := device/google/sunfish/sm7150
 
+# Kernel
+BOARD_KERNEL_IMAGE_NAME := Image.lz4
+TARGET_COMPILE_WITH_MSM_KERNEL := true
+TARGET_KERNEL_CONFIG := sunfish_defconfig
+TARGET_KERNEL_SOURCE := kernel/google/msm-4.14
+TARGET_NEEDS_DTBOIMAGE := true
+
 BOARD_KERNEL_CMDLINE += console=ttyMSM0,115200n8 androidboot.console=ttyMSM0 printk.devkmsg=on
 BOARD_KERNEL_CMDLINE += msm_rtb.filter=0x237
 BOARD_KERNEL_CMDLINE += ehci-hcd.park=3
@@ -63,7 +70,6 @@ BOARD_BOOT_HEADER_VERSION := 2
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 
 # DTBO partition definitions
-BOARD_PREBUILT_DTBOIMAGE := device/google/sunfish-kernel/dtbo.img
 BOARD_DTBOIMG_PARTITION_SIZE := 8388608
 
 TARGET_NO_KERNEL := false
@@ -211,31 +217,6 @@ DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/sunfish/device_framewo
 # Use mke2fs to create ext4 images
 TARGET_USES_MKE2FS := true
 
-# Kernel modules
-ifeq (,$(filter-out sunfish_kasan, $(TARGET_PRODUCT)))
-BOARD_VENDOR_KERNEL_MODULES += \
-    $(wildcard device/google/sunfish-kernel/kasan/*.ko)
-else ifeq (,$(filter-out sunfish_kernel_debug_memory, $(TARGET_PRODUCT)))
-BOARD_VENDOR_KERNEL_MODULES += \
-    $(wildcard device/google/sunfish-kernel/debug_memory/*.ko)
-else ifeq (,$(filter-out sunfish_kernel_debug_memory_accounting, $(TARGET_PRODUCT)))
-BOARD_VENDOR_KERNEL_MODULES += \
-    $(wildcard device/google/sunfish-kernel/debug_memory_accounting/*.ko)
-BOARD_KERNEL_CMDLINE += page_owner=on
-else ifeq (,$(filter-out sunfish_kernel_debug_locking, $(TARGET_PRODUCT)))
-BOARD_VENDOR_KERNEL_MODULES += \
-    $(wildcard device/google/sunfish-kernel/debug_locking/*.ko)
-else ifeq (,$(filter-out sunfish_kernel_debug_hang, $(TARGET_PRODUCT)))
-BOARD_VENDOR_KERNEL_MODULES += \
-    $(wildcard device/google/sunfish-kernel/debug_hang/*.ko)
-else ifeq (,$(filter-out sunfish_kernel_debug_api, $(TARGET_PRODUCT)))
-BOARD_VENDOR_KERNEL_MODULES += \
-    $(wildcard device/google/sunfish-kernel/debug_api/*.ko)
-else
-BOARD_VENDOR_KERNEL_MODULES += \
-    $(wildcard device/google/sunfish-kernel/*.ko)
-endif
-
 # dynamic partition
 BOARD_SUPER_PARTITION_SIZE := 9755951104
 BOARD_SUPER_PARTITION_GROUPS := google_dynamic_partitions
@@ -256,23 +237,6 @@ BOARD_SUPER_PARTITION_ERROR_LIMIT := 9231663104
 # to fail. Here we increase it by 600 MB to keep building.
 ifeq (,$(filter-out sunfish_tuscany, $(TARGET_PRODUCT)))
 BOARD_SUPER_PARTITION_ERROR_LIMIT := 9831663104
-endif
-
-# DTB
-ifeq (,$(filter-out sunfish_kasan, $(TARGET_PRODUCT)))
-BOARD_PREBUILT_DTBIMAGE_DIR := device/google/sunfish-kernel/kasan
-else ifeq (,$(filter-out sunfish_kernel_debug_memory, $(TARGET_PRODUCT)))
-BOARD_PREBUILT_DTBIMAGE_DIR := device/google/sunfish-kernel/debug_memory
-else ifeq (,$(filter-out sunfish_kernel_debug_memory_accounting, $(TARGET_PRODUCT)))
-BOARD_PREBUILT_DTBIMAGE_DIR := device/google/sunfish-kernel/debug_memory_accounting
-else ifeq (,$(filter-out sunfish_kernel_debug_locking, $(TARGET_PRODUCT)))
-BOARD_PREBUILT_DTBIMAGE_DIR := device/google/sunfish-kernel/debug_locking
-else ifeq (,$(filter-out sunfish_kernel_debug_hang, $(TARGET_PRODUCT)))
-BOARD_PREBUILT_DTBIMAGE_DIR := device/google/sunfish-kernel/debug_hang
-else ifeq (,$(filter-out sunfish_kernel_debug_api, $(TARGET_PRODUCT)))
-BOARD_PREBUILT_DTBIMAGE_DIR := device/google/sunfish-kernel/debug_api
-else
-BOARD_PREBUILT_DTBIMAGE_DIR := device/google/sunfish-kernel
 endif
 
 # Testing related defines
