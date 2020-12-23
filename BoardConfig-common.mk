@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+
 include build/make/target/board/BoardConfigMainlineCommon.mk
 include build/make/target/board/BoardConfigPixelCommon.mk
 
@@ -88,7 +90,10 @@ AB_OTA_PARTITIONS += \
      dtbo \
      product \
      system_ext \
-     vbmeta_system
+     vbmeta_system \
+     vendor
+
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # Partitions (listed in the file) to be wiped under recovery.
 TARGET_RECOVERY_WIPE := device/google/sunfish/recovery.wipe
@@ -246,3 +251,4 @@ endif
 #BOARD_PERFSETUP_SCRIPT := platform_testing/scripts/perf-setup/s5-setup.sh
 
 -include vendor/google_devices/sunfish/proprietary/BoardConfigVendor.mk
+include vendor/google/sunfish/BoardConfigVendor.mk
