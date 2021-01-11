@@ -40,6 +40,11 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/google_nos/host/android \
     vendor/google_nos/test/system-test-harness
 
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/qcom/opensource/commonsys-intf/display \
+    vendor/qcom/opensource/display
+
 # Include sensors soong namespace
 PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/sensors \
