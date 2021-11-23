@@ -329,6 +329,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.google_hwl.enabled=true \
     persist.camera.google_hwl.name=libgooglecamerahwl_impl.so
 
+# Camera
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.vendor.camera.extensions.package=com.google.android.apps.camera.services \
+    ro.vendor.camera.extensions.service=com.google.android.apps.camera.services.extensions.service.PixelExtensions
+
 # camera common HWL
 CAMERA_COMMON_HWL := true
 
