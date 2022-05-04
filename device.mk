@@ -441,6 +441,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     flp.conf
 
+# HBM
+PRODUCT_PACKAGES += \
+    HbmSVManagerOverlay
+
 # HIDL
 PRODUCT_PACKAGES += \
     libhwbinder.vendor
