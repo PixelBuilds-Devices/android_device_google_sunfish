@@ -213,6 +213,9 @@ TARGET_USES_DISPLAY_RENDER_INTENTS := true
 TARGET_USES_COLOR_METADATA := true
 TARGET_USES_DRM_PP := true
 
+# Needed for camera
+TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE := true
+
 # Vendor Interface Manifest
 DEVICE_MANIFEST_FILE := device/google/sunfish/manifest.xml
 DEVICE_MATRIX_FILE := device/google/sunfish/compatibility_matrix.xml
