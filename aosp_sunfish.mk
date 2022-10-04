@@ -73,8 +73,8 @@ PRODUCT_MODEL := Pixel 4a
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_PRODUCT=sunfish \
-    PRIVATE_BUILD_DESC="sunfish-user 13 TP1A.220905.004 8927612 release-keys"
+    PRIVATE_BUILD_DESC="sunfish-user 13 TP1A.221005.002 9012097 release-keys"
 
-BUILD_FINGERPRINT := google/sunfish/sunfish:13/TP1A.220905.004/8927612:user/release-keys
+BUILD_FINGERPRINT := google/sunfish/sunfish:13/TP1A.221005.002/9012097:user/release-keys
 
 $(call inherit-product, vendor/google/sunfish/sunfish-vendor.mk)
