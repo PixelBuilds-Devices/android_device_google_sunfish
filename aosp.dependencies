@@ -1,0 +1,12 @@
+[
+   {
+     "repository": "kernel_google_msm-4.14",
+     "target_path": "kernel/google/msm-4.14"
+   },
+   {
+      "repository":"vendor_google_sunfish",
+      "target_path":"vendor/google/sunfish",
+      "branch":"thirteen",
+      "remote":"pixel-devices-blobs"
+   }
+]
