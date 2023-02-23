@@ -41,6 +41,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_product.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
 
+# Inherit some common PixelExperience stuff
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_GAPPS_ARCH := arm64
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+
 $(call inherit-product, device/google/sunfish/device-sunfish.mk)
 $(call inherit-product-if-exists, vendor/google_devices/sunfish/proprietary/device-vendor.mk)
 $(call inherit-product-if-exists, vendor/google_devices/sunfish/prebuilts/device-vendor-sunfish.mk)
@@ -61,7 +66,13 @@ PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
 
 PRODUCT_MANUFACTURER := Google
-PRODUCT_BRAND := Android
+PRODUCT_BRAND := google
 PRODUCT_NAME := aosp_sunfish
 PRODUCT_DEVICE := sunfish
-PRODUCT_MODEL := AOSP on sunfish
+PRODUCT_MODEL := Pixel 4a
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    TARGET_PRODUCT=sunfish \
+    PRIVATE_BUILD_DESC="sunfish-user 13 TP1A.220624.014 8819323 release-keys"
+
+BUILD_FINGERPRINT := google/sunfish/sunfish:13/TP1A.220624.014/8819323:user/release-keys
