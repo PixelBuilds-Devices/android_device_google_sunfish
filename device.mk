@@ -448,6 +448,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     HbmSVManagerOverlay
 
+# Lineage Health
+include hardware/google/pixel/lineage_health/device.mk
+
 # HIDL
 PRODUCT_PACKAGES += \
     libhwbinder.vendor
