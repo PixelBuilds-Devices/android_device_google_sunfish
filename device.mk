@@ -320,6 +320,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.managebuffer.enable=1
 
+# Latch unsignaled config
+PRODUCT_PRODUCT_PROPERTIES += \
+    debug.sf.latch_unsignaled=true
+
 # camera google face detection
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.googfd.enable=1
