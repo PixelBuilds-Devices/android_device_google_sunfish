@@ -6,7 +6,7 @@
    {
       "repository":"android_vendor_google_sunfish",
       "target_path":"vendor/google/sunfish",
-      "branch":"infinity",
+      "branch":"infinity-oss",
       "remote":"pixelbuilds-blobs-gitlab"
    }
 ]
